@@ -126,6 +126,66 @@
     /* B-5 operation guide */
     #op-guide{position:absolute;left:12px;bottom:12px;background:rgba(8,14,20,.82);border-radius:8px;padding:10px 14px;font-size:10px;color:var(--muted);z-index:4;pointer-events:none;line-height:1.8}
     .op-guide-title{font-size:10px;font-weight:600;color:var(--text);margin-bottom:2px;letter-spacing:.05em}
+    /* ── Mode selector ─────────────────────────────────────────────────── */
+    #mode-selector{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;z-index:5;pointer-events:auto}
+    .mode-select-title{font-size:.7rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+    .mode-btns{display:flex;gap:16px}
+    .mode-btn{background:transparent;border:1.5px solid var(--accent);border-radius:8px;color:var(--accent);padding:13px 26px;font-size:.88rem;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s;min-width:155px;text-align:center;line-height:1.3}
+    .mode-btn small{display:block;font-size:.62rem;font-weight:400;color:var(--muted);margin-top:3px;letter-spacing:.02em}
+    .mode-btn:hover{background:var(--accent);color:#000}
+    .mode-btn:hover small{color:rgba(0,0,0,.6)}
+    /* ── Header mode badge ─────────────────────────────────────────────── */
+    #mode-badge{display:flex;align-items:center;gap:5px;font-size:.72rem;color:var(--accent);padding:3px 9px;border:1px solid rgba(0,191,165,.35);border-radius:4px;margin-right:4px}
+    /* ── 2D step panels (shared positioning) ──────────────────────────── */
+    #td-step1,#td-step2,#td-step3,#td-step4{position:absolute;inset:0;background:var(--bg);display:flex;flex-direction:column;padding:10px 14px;gap:8px;overflow:hidden}
+    .td-step-hdr{font-size:.78rem;font-weight:600;letter-spacing:.06em;color:var(--muted);flex-shrink:0;padding-bottom:4px;border-bottom:1px solid rgba(0,191,165,.1)}
+    /* Step 1 – image grid */
+    .td-grid-wrap{display:flex;gap:12px;flex:1;min-height:0}
+    .intraoral-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:5px;flex:1;min-height:0}
+    .io-cell{position:relative;border:1px solid rgba(0,191,165,.18);border-radius:4px;overflow:hidden;background:var(--panel);display:flex;align-items:center;justify-content:center}
+    .io-cell img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .4s}
+    .io-cell img.loaded{opacity:1}
+    .io-label{font-size:.54rem;color:var(--muted);text-align:center;padding:2px 4px;background:rgba(8,14,20,.75);position:absolute;bottom:0;left:0;right:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .io-ph{font-size:.58rem;color:rgba(90,122,138,.5);text-align:center;padding:4px;line-height:1.3}
+    /* Step 1 – tabs */
+    .td-tabs{display:flex;gap:8px;flex-shrink:0}
+    .td-tab{background:transparent;border:1.5px solid rgba(0,191,165,.35);border-radius:6px;color:var(--muted);padding:6px 18px;font-size:.78rem;font-weight:600;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s}
+    .td-tab:hover{border-color:var(--accent);color:var(--accent)}
+    .td-tab.active{background:var(--accent);border-color:var(--accent);color:#000}
+    /* Step 1 – panels */
+    #td-intraoral-panel{flex:1;min-height:0;transition:opacity .3s}
+    #td-pano-panel{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;transition:opacity .3s;border-radius:6px;overflow:hidden;background:var(--panel)}
+    #td-pano-panel img{width:100%;max-height:100%;object-fit:contain;display:block;opacity:0;transition:opacity .4s}
+    #td-pano-panel img.loaded{opacity:1}
+    /* Step 2 – AI detection */
+    .td-detect-wrap{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:6px;background:var(--panel)}
+    .td-detect-wrap img{max-width:100%;max-height:100%;object-fit:contain;display:block;border-radius:4px}
+    #ai-detect-svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+    .td-detect-info{font-size:.78rem;font-weight:600;color:var(--accent);text-align:center;flex-shrink:0;letter-spacing:.03em;min-height:1.2em}
+    /* Step 3 – ortho compare */
+    .td-cmp-wrap{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:8px;cursor:ew-resize;user-select:none;background:var(--panel)}
+    .td-cmp-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:opacity .3s}
+    #td-img-after{clip-path:inset(0 0 0 50%)}
+    .td-divider{position:absolute;top:0;bottom:0;left:50%;width:3px;background:rgba(255,255,255,.85);transform:translateX(-50%);box-shadow:0 0 8px rgba(255,255,255,.45);pointer-events:none}
+    .td-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;background:white;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.5);pointer-events:none}
+    .td-badge-before{position:absolute;top:10px;left:10px;font-size:.58rem;font-weight:700;letter-spacing:.08em;padding:3px 7px;border-radius:3px;background:rgba(0,0,0,.5);color:var(--muted)}
+    .td-badge-after{position:absolute;top:10px;right:10px;font-size:.58rem;font-weight:700;letter-spacing:.08em;padding:3px 7px;border-radius:3px;background:rgba(0,191,165,.15);border:1px solid rgba(0,191,165,.4);color:var(--accent)}
+    .td-overlay-txt{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(0,191,165,.15);border:1px solid rgba(0,191,165,.4);color:var(--accent);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:4px;pointer-events:none;white-space:nowrap;letter-spacing:.04em}
+    /* Step 4 – whitening (comparison slider) */
+    #td-wh-cmp{position:relative;flex:1;min-height:0;overflow:hidden;border-radius:8px;cursor:ew-resize;user-select:none;background:var(--panel)}
+    #td-wh-cmp img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;transition:opacity .3s}
+    #td-wh-after{clip-path:inset(0 0 0 50%)}
+    #td-wh-shade{flex-shrink:0;background:var(--card);border:1px solid rgba(0,191,165,.18);border-radius:8px;padding:10px 16px;display:flex;justify-content:center;align-items:center;gap:12px}
+    /* Step 4 – fallback filter (when whitened image unavailable) */
+    .td-wh-wrap{position:relative;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:6px;background:var(--panel)}
+    .td-wh-wrap img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+    #td-wh-overlay{position:absolute;top:14%;left:18%;width:64%;height:58%;background:white;pointer-events:none;mix-blend-mode:soft-light;opacity:0;transition:opacity .15s;border-radius:6px}
+    #whitening-ui-2d{flex-shrink:0;background:var(--card);border:1px solid rgba(0,191,165,.2);border-radius:8px;padding:10px 16px}
+    /* 2D footer buttons */
+    .td-footer{display:flex;justify-content:center;flex-shrink:0}
+    .td-next-btn{background:transparent;border:1.5px solid var(--accent);border-radius:6px;color:var(--accent);padding:9px 28px;font-size:.84rem;font-weight:700;cursor:pointer;font-family:inherit;letter-spacing:.04em;transition:all .2s}
+    .td-next-btn:hover:not(:disabled){background:var(--accent);color:#000}
+    .td-next-btn:disabled{opacity:.35;cursor:not-allowed}
   </style>
 </head>
 <body>
@@ -144,6 +204,10 @@
       <div class="kirei-sub">DENTAL AI</div>
     </div>
     <div class="patient-row">
+      <div id="mode-badge" class="hidden">
+        <span id="mode-badge-icon">⬛</span>
+        <span id="mode-badge-text">3Dスキャン</span>
+      </div>
       <div class="patient-id">患者ID: <span id="patient-id-display">—</span></div>
       <div class="conn"><div class="dot"></div>接続中</div>
     </div>
@@ -285,7 +349,178 @@
         </div>
       </div>
 
-      <div id="action-bar">
+      <!-- ── 2D Step 1: 画像取込 ─────────────────────────────────────── -->
+      <div id="td-step1" class="hidden">
+        <div class="td-step-hdr">STEP 01 — 画像取込</div>
+        <!-- Tab buttons -->
+        <div class="td-tabs">
+          <button class="td-tab active" id="td-tab-intraoral">口腔内写真</button>
+          <button class="td-tab" id="td-tab-pano">パノラマレントゲン</button>
+        </div>
+        <!-- Panel A: 口腔内写真 3x3グリッド -->
+        <div id="td-intraoral-panel">
+          <div class="intraoral-grid">
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_upper_right.png" alt="右上側面" onload="this.classList.add('loaded')">
+              <div class="io-label">右上側面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_upper_occlusal.png" alt="上顎咬合面" onload="this.classList.add('loaded')">
+              <div class="io-label">上顎咬合面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_upper_left.png" alt="左上側面" onload="this.classList.add('loaded')">
+              <div class="io-label">左上側面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_right.png" alt="右側面" onload="this.classList.add('loaded')">
+              <div class="io-label">右側面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_front.png" alt="正面" onload="this.classList.add('loaded')">
+              <div class="io-label">正面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_left.png" alt="左側面" onload="this.classList.add('loaded')">
+              <div class="io-label">左側面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_lower_right.png" alt="右下側面" onload="this.classList.add('loaded')">
+              <div class="io-label">右下側面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_lower_occlusal.png" alt="下顎咬合面" onload="this.classList.add('loaded')">
+              <div class="io-label">下顎咬合面</div>
+            </div>
+            <div class="io-cell">
+              <img src="images/intraoral/intraoral_lower_left.png" alt="左下側面" onload="this.classList.add('loaded')">
+              <div class="io-label">左下側面</div>
+            </div>
+          </div>
+        </div>
+        <!-- Panel B: パノラマレントゲン -->
+        <div id="td-pano-panel" class="hidden">
+          <img src="images/intraoral/panoramic_xray.png" alt="パノラマレントゲン" onload="this.classList.add('loaded')">
+        </div>
+        <div class="td-footer">
+          <button class="td-next-btn" id="td-step1-btn">AI解析を開始</button>
+        </div>
+      </div>
+
+      <!-- ── 2D Step 2: AI歯牙検出 ──────────────────────────────────── -->
+      <div id="td-step2" class="hidden">
+        <div class="td-step-hdr">STEP 02 — AI歯牙検出</div>
+        <div class="td-detect-wrap">
+          <img id="td-detect-img" src="images/intraoral/intraoral_front.png" alt="正面">
+          <svg id="ai-detect-svg" preserveAspectRatio="xMidYMid meet"></svg>
+        </div>
+        <div class="td-detect-info" id="td-detect-info">AI処理中...</div>
+        <div class="td-footer">
+          <button class="td-next-btn" id="td-step2-btn" disabled>矯正シミュレーション</button>
+        </div>
+      </div>
+
+      <!-- ── 2D Step 3: 矯正シミュレーション ──────────────────────── -->
+      <div id="td-step3" class="hidden">
+        <div class="td-step-hdr">STEP 03 — 矯正シミュレーション</div>
+        <div class="td-cmp-wrap" id="td-cmp-wrap">
+          <img id="td-img-before" src="images/intraoral/intraoral_front.png" alt="Before">
+          <img id="td-img-after"
+               src="images/intraoral/intraoral_front_ortho.png"
+               alt="After"
+               onerror="this.style.display='none';document.getElementById('td-divider').style.display='none';document.getElementById('td-handle').style.display='none';document.getElementById('td-cmp-wrap').style.cursor='default'">
+          <div class="td-divider" id="td-divider"></div>
+          <div class="td-handle"  id="td-handle">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M4 2L1 7l3 5M10 2l3 5-3 5" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="td-badge-before">BEFORE（治療前）</div>
+          <div class="td-badge-after">AFTER（12ヶ月後）</div>
+          <div class="td-overlay-txt">矯正後の予測結果（12ヶ月後）</div>
+        </div>
+        <div class="td-footer">
+          <button class="td-next-btn" id="td-step3-btn">ホワイトニング</button>
+        </div>
+      </div>
+
+      <!-- ── 2D Step 4: ホワイトニング ─────────────────────────────── -->
+      <div id="td-step4" class="hidden">
+        <div class="td-step-hdr">STEP 04 — ホワイトニング シミュレーション</div>
+
+        <!-- Primary: Before/After comparison slider -->
+        <div id="td-wh-cmp">
+          <img id="td-wh-before" src="images/intraoral/intraoral_front.png" alt="Before">
+          <img id="td-wh-after"
+               src="images/intraoral/intraoral_front_whitened.png"
+               alt="After"
+               onerror="document.getElementById('td-wh-cmp').classList.add('hidden');document.getElementById('td-wh-fallback').classList.remove('hidden');document.getElementById('td-wh-shade').classList.add('hidden');document.getElementById('whitening-ui-2d').classList.remove('hidden')">
+          <div class="td-divider" id="td-wh-div"></div>
+          <div class="td-handle"  id="td-wh-hdl">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M4 2L1 7l3 5M10 2l3 5-3 5" stroke="#444" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="td-badge-before">BEFORE</div>
+          <div class="td-badge-after">AFTER</div>
+        </div>
+
+        <!-- Shade guide (shown with comparison slider) -->
+        <div id="td-wh-shade">
+          <span class="wh-label">ホワイトニング効果:</span>
+          <span class="shade-pill" style="background:rgba(212,168,67,.12);border-color:var(--gold);color:var(--gold)">A3</span>
+          <span class="shade-arrow">→</span>
+          <span class="shade-pill">B1</span>
+          <span class="wh-guide" style="margin:0 0 0 8px">ナチュラルホワイトニング後（B1相当）</span>
+        </div>
+
+        <!-- Fallback: filter overlay (shown when whitened image unavailable) -->
+        <div class="td-wh-wrap hidden" id="td-wh-fallback">
+          <img src="images/intraoral/intraoral_front.png" alt="ホワイトニング">
+          <div id="td-wh-overlay"></div>
+        </div>
+        <div id="whitening-ui-2d" class="hidden">
+          <div class="wh-title">ホワイトニング シミュレーション</div>
+          <div class="wh-row">
+            <span class="wh-label">シェードレベル:</span>
+            <input id="whitening-slider-2d" type="range" min="1" max="10" value="1" style="flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:linear-gradient(to right,#C8A048,#fff);outline:none;cursor:pointer">
+            <span class="shade-pill" id="shade-display-2d">A3</span>
+          </div>
+          <div class="wh-row" style="justify-content:center;gap:16px">
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="wh-label">現在:</span>
+              <span class="shade-pill" style="background:rgba(212,168,67,.12);border-color:var(--gold);color:var(--gold)">A3</span>
+            </div>
+            <span class="shade-arrow">→</span>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span class="wh-label">目標:</span>
+              <span class="shade-pill" id="shade-target-2d">A3</span>
+            </div>
+          </div>
+          <div class="wh-guide" id="shade-guide-2d">日本人の平均的な色調（A3相当）</div>
+        </div>
+
+        <div class="td-footer">
+          <button class="td-next-btn" id="td-step4-btn">顔貌プレビュー</button>
+        </div>
+      </div>
+
+      <!-- Mode selector: shown on initial screen -->
+      <div id="mode-selector">
+        <div class="mode-select-title">入力モードを選択</div>
+        <div class="mode-btns">
+          <button class="mode-btn" id="btn-mode-3d">
+            ⬛ 3Dスキャンデータ
+            <small>口腔内スキャナーから読み込み</small>
+          </button>
+          <button class="mode-btn" id="btn-mode-2d">
+            📷 2D画像から解析
+            <small>口腔内写真＋レントゲン</small>
+          </button>
+        </div>
+      </div>
+
+      <div id="action-bar" class="hidden">
         <span id="proc-text"></span>
         <button id="action-btn">スキャン開始</button>
       </div>
@@ -644,6 +879,7 @@ function showOverlay(txt, dur=2200) {
 let phase=0; // 0=before step1, 1=scan done, 2=ai done, 3=ortho done, 4=whitening, 5=face
 let busy=false;
 let autoRotate=false;
+let currentMode=null; // null | '3d' | '2d'
 
 const actionBtn = document.getElementById('action-btn');
 const procText  = document.getElementById('proc-text');
@@ -913,16 +1149,15 @@ actionBtn.addEventListener('click',()=>{
 document.getElementById('wh-next-btn').addEventListener('click',()=>{ if(!busy) showFacePreview(); });
 document.getElementById('back-btn').addEventListener('click',()=>{
   faceEl.classList.add('hidden');
-  document.getElementById('action-bar').classList.remove('hidden');
-  // Restore jaw labels and controls
-  document.getElementById('jaw-gap-panel').classList.remove('hidden');
-  document.getElementById('jaw-toggle').classList.remove('hidden');
-  phase=3; setNavActive(2);
-  actionBtn.textContent='ホワイトニング';
-});
-
-document.getElementById('restart-btn').addEventListener('click',()=>{
-  location.reload();
+  if(currentMode==='2d'){
+    show2DStep4();
+  } else {
+    document.getElementById('action-bar').classList.remove('hidden');
+    document.getElementById('jaw-gap-panel').classList.remove('hidden');
+    document.getElementById('jaw-toggle').classList.remove('hidden');
+    phase=3; setNavActive(2);
+    actionBtn.textContent='ホワイトニング';
+  }
 });
 
 slider.addEventListener('input',()=>{
@@ -1054,11 +1289,319 @@ requestAnimationFrame(loop);
 
 // Start with mesh hidden (clip above top)
 applyColors(fdi=>fdi===0?C_GUM:C_TOOTH);
-// Slight intro: show mesh immediately but with natural colors
-// (clipping removed so user sees the mesh from the start as a teaser)
 clipPlane.constant=999;
-// Apply initial jaw opening (slider=30 → slight open, so slider=0 = closed is visible)
 setJawGap(30);
+
+// ── Mode selection ────────────────────────────────────────────────────────
+const STEPS_3D = [
+  ['3Dスキャン',       '口腔内スキャンによる<br>データ取得・3D再構成'],
+  ['AI歯牙識別',       'AIによる自動歯牙検出・<br>FDI番号ラベリング'],
+  ['矯正シミュレーション','治療計画に基づく<br>歯列矯正の予測結果'],
+  ['ホワイトニング',   '10段階シェードガイドによる<br>色調シミュレーション'],
+  ['顔貌プレビュー',   'スマイルシミュレーション'],
+];
+const STEPS_2D = [
+  ['画像取込',         '口腔内写真9枚＋<br>パノラマレントゲン取込'],
+  ['AI歯牙検出',       'AIによる歯牙自動検出・<br>FDI番号ラベリング'],
+  ['矯正シミュレーション','矯正前後の比較プレビュー'],
+  ['ホワイトニング',   '10段階シェードガイドによる<br>色調シミュレーション'],
+  ['顔貌プレビュー',   'スマイルシミュレーション'],
+];
+
+function updateStepNav(mode) {
+  const steps = mode==='3d' ? STEPS_3D : STEPS_2D;
+  document.querySelectorAll('.step-item').forEach((el,i) => {
+    el.querySelector('.step-title').textContent = steps[i][0];
+    el.querySelector('.step-desc').innerHTML   = steps[i][1];
+  });
+}
+
+function selectMode(mode) {
+  currentMode = mode;
+  document.getElementById('mode-selector').classList.add('hidden');
+  // Header badge
+  const badge = document.getElementById('mode-badge');
+  badge.classList.remove('hidden');
+  document.getElementById('mode-badge-icon').textContent = mode==='3d' ? '⬛' : '📷';
+  document.getElementById('mode-badge-text').textContent = mode==='3d' ? '3Dスキャン' : '2D画像';
+  updateStepNav(mode);
+  if(mode==='3d') {
+    actionBtn.textContent = 'スキャン開始';
+    actionBtn.disabled = false;
+    document.getElementById('action-bar').classList.remove('hidden');
+  } else {
+    // Hide all 3D overlays
+    document.getElementById('jaw-gap-panel').classList.add('hidden');
+    document.getElementById('jaw-toggle').classList.add('hidden');
+    document.getElementById('op-guide').style.display = 'none';
+    labelUpper.style.display = 'none';
+    labelLower.style.display = 'none';
+    show2DStep1();
+  }
+}
+
+document.getElementById('btn-mode-3d').addEventListener('click', () => selectMode('3d'));
+document.getElementById('btn-mode-2d').addEventListener('click', () => selectMode('2d'));
+
+// ── 2D Step helpers ───────────────────────────────────────────────────────
+function hide2DAll() {
+  ['td-step1','td-step2','td-step3','td-step4'].forEach(id =>
+    document.getElementById(id).classList.add('hidden'));
+}
+
+// ── Step 1 tab switching ──────────────────────────────────────────────────
+function switchStep1Tab(tab) {
+  const inEl  = document.getElementById('td-intraoral-panel');
+  const paEl  = document.getElementById('td-pano-panel');
+  const showEl = tab === 'intraoral' ? inEl : paEl;
+  const hideEl = tab === 'intraoral' ? paEl : inEl;
+  document.getElementById('td-tab-intraoral').classList.toggle('active', tab === 'intraoral');
+  document.getElementById('td-tab-pano').classList.toggle('active', tab === 'pano');
+  // Fade out current panel
+  hideEl.style.opacity = '0';
+  hideEl.style.pointerEvents = 'none';
+  setTimeout(() => {
+    hideEl.classList.add('hidden');
+    hideEl.style.opacity = '';
+    hideEl.style.pointerEvents = '';
+    showEl.style.opacity = '0';
+    showEl.classList.remove('hidden');
+    requestAnimationFrame(() => requestAnimationFrame(() => { showEl.style.opacity = ''; }));
+  }, 300);
+}
+document.getElementById('td-tab-intraoral').addEventListener('click', () => switchStep1Tab('intraoral'));
+document.getElementById('td-tab-pano').addEventListener('click', () => switchStep1Tab('pano'));
+
+function show2DStep1() {
+  hide2DAll();
+  setNavActive(0);
+  const s1 = document.getElementById('td-step1');
+  s1.classList.remove('hidden');
+  // Reset to intraoral tab
+  document.getElementById('td-intraoral-panel').classList.remove('hidden');
+  document.getElementById('td-intraoral-panel').style.opacity = '';
+  document.getElementById('td-pano-panel').classList.add('hidden');
+  document.getElementById('td-tab-intraoral').classList.add('active');
+  document.getElementById('td-tab-pano').classList.remove('active');
+  // Staggered fade-in for grid images
+  const imgs = s1.querySelectorAll('#td-intraoral-panel img');
+  imgs.forEach((img, i) => {
+    img.style.transitionDelay = (i * 0.08) + 's';
+    if(img.complete && img.naturalWidth) img.classList.add('loaded');
+  });
+}
+
+document.getElementById('td-step1-btn').addEventListener('click', () => {
+  hide2DAll();
+  show2DStep2();
+});
+
+function show2DStep2() {
+  setNavActive(1);
+  const s2 = document.getElementById('td-step2');
+  s2.classList.remove('hidden');
+  document.getElementById('td-detect-info').textContent = 'AI処理中...';
+  document.getElementById('td-step2-btn').disabled = true;
+  const svg = document.getElementById('ai-detect-svg');
+  svg.innerHTML = '';
+
+  // Sync SVG viewBox to rendered image size after layout
+  const imgEl = document.getElementById('td-detect-img');
+  function runDetection() {
+    const iw = imgEl.naturalWidth  || 600;
+    const ih = imgEl.naturalHeight || 450;
+    svg.setAttribute('viewBox', `0 0 ${iw} ${ih}`);
+
+    // Tooth boxes defined as fractions of natural image size
+    // (tuned for a typical front intraoral photo ~600×450)
+    const sx = iw/600, sy = ih/450;
+    const teeth = [
+      {fdi:11,x:285*sx,y:165*sy,w:36*sx,h:50*sy},
+      {fdi:12,x:250*sx,y:175*sy,w:30*sx,h:44*sy},
+      {fdi:13,x:219*sx,y:182*sy,w:28*sx,h:48*sy},
+      {fdi:21,x:322*sx,y:165*sy,w:36*sx,h:50*sy},
+      {fdi:22,x:357*sx,y:175*sy,w:30*sx,h:44*sy},
+      {fdi:23,x:386*sx,y:182*sy,w:28*sx,h:48*sy},
+      {fdi:31,x:290*sx,y:256*sy,w:34*sx,h:46*sy},
+      {fdi:32,x:258*sx,y:262*sy,w:28*sx,h:42*sy},
+      {fdi:33,x:231*sx,y:270*sy,w:26*sx,h:44*sy},
+      {fdi:41,x:324*sx,y:256*sy,w:34*sx,h:46*sy},
+      {fdi:42,x:357*sx,y:262*sy,w:28*sx,h:42*sy},
+      {fdi:43,x:383*sx,y:270*sy,w:26*sx,h:44*sy},
+    ];
+    const qColor = {1:'#4d8bff',2:'#ff5555',3:'#ff9933',4:'#44cc55'};
+
+    teeth.forEach((t, i) => {
+      setTimeout(() => {
+        const g   = document.createElementNS('http://www.w3.org/2000/svg','g');
+        const col = qColor[Math.floor(t.fdi/10)] || '#aaa';
+        // label background
+        const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        bg.setAttribute('x', t.x - t.w/2);
+        bg.setAttribute('y', t.y - t.h/2 - 14*sy);
+        bg.setAttribute('width',  22*sx);
+        bg.setAttribute('height', 13*sy);
+        bg.setAttribute('rx', 2);
+        bg.setAttribute('fill','rgba(8,14,20,0.72)');
+        // border
+        const r = document.createElementNS('http://www.w3.org/2000/svg','rect');
+        r.setAttribute('x', t.x - t.w/2);
+        r.setAttribute('y', t.y - t.h/2);
+        r.setAttribute('width',  t.w);
+        r.setAttribute('height', t.h);
+        r.setAttribute('rx', 4);
+        r.setAttribute('fill','none');
+        r.setAttribute('stroke', col);
+        r.setAttribute('stroke-width', 2);
+        r.setAttribute('opacity','0.88');
+        // label text
+        const tx = document.createElementNS('http://www.w3.org/2000/svg','text');
+        tx.setAttribute('x', t.x - t.w/2 + 2*sx);
+        tx.setAttribute('y', t.y - t.h/2 - 3*sy);
+        tx.setAttribute('fill', col);
+        tx.setAttribute('font-size', 10*Math.min(sx,sy));
+        tx.setAttribute('font-family','Outfit,sans-serif');
+        tx.setAttribute('font-weight','600');
+        tx.textContent = t.fdi;
+        g.appendChild(bg); g.appendChild(r); g.appendChild(tx);
+        svg.appendChild(g);
+
+        if(i === teeth.length - 1) {
+          setTimeout(() => {
+            document.getElementById('td-detect-info').textContent =
+              '26本検出（上顎12本 / 下顎14本）';
+            document.getElementById('td-step2-btn').disabled = false;
+          }, 200);
+        }
+      }, 2000 + i * 110);
+    });
+  }
+
+  if(imgEl.complete && imgEl.naturalWidth) runDetection();
+  else imgEl.onload = runDetection;
+}
+
+document.getElementById('td-step2-btn').addEventListener('click', () => {
+  hide2DAll();
+  show2DStep3();
+});
+
+// TD comparison slider (Step 3)
+let tdSplit = 50, tdDrag = false;
+const tdCmpWrap = document.getElementById('td-cmp-wrap');
+
+function setTDSplit(pct) {
+  tdSplit = Math.max(2, Math.min(98, pct));
+  document.getElementById('td-img-after').style.clipPath = `inset(0 0 0 ${tdSplit}%)`;
+  document.getElementById('td-divider').style.left = tdSplit + '%';
+  document.getElementById('td-handle').style.left  = tdSplit + '%';
+}
+function onTDMove(cx) {
+  const r = tdCmpWrap.getBoundingClientRect();
+  setTDSplit(((cx - r.left) / r.width) * 100);
+}
+tdCmpWrap.addEventListener('mousedown', e => { tdDrag=true; onTDMove(e.clientX); });
+window.addEventListener('mouseup', () => tdDrag=false);
+window.addEventListener('mousemove', e => { if(tdDrag) onTDMove(e.clientX); });
+tdCmpWrap.addEventListener('touchstart', e => { e.preventDefault(); tdDrag=true; onTDMove(e.touches[0].clientX); },{passive:false});
+window.addEventListener('touchend', () => tdDrag=false);
+window.addEventListener('touchmove', e => { if(tdDrag) onTDMove(e.touches[0].clientX); },{passive:false});
+
+function show2DStep3() {
+  setNavActive(2);
+  document.getElementById('td-step3').classList.remove('hidden');
+  // Reset in case onerror was previously triggered
+  const afterImg = document.getElementById('td-img-after');
+  afterImg.style.display = '';
+  document.getElementById('td-divider').style.display = '';
+  document.getElementById('td-handle').style.display  = '';
+  document.getElementById('td-cmp-wrap').style.cursor = '';
+  // Re-trigger load attempt
+  const src = afterImg.src;
+  afterImg.src = '';
+  afterImg.src = src;
+  setTDSplit(50);
+}
+
+document.getElementById('td-step3-btn').addEventListener('click', () => {
+  hide2DAll();
+  show2DStep4();
+});
+
+// Whitening comparison slider (Step 4 primary)
+let tdWhSplit = 50, tdWhDrag = false;
+const tdWhCmp = document.getElementById('td-wh-cmp');
+function setTDWhSplit(pct) {
+  tdWhSplit = Math.max(2, Math.min(98, pct));
+  document.getElementById('td-wh-after').style.clipPath = `inset(0 0 0 ${tdWhSplit}%)`;
+  document.getElementById('td-wh-div').style.left  = tdWhSplit + '%';
+  document.getElementById('td-wh-hdl').style.left  = tdWhSplit + '%';
+}
+function onTDWhMove(cx) {
+  const r = tdWhCmp.getBoundingClientRect();
+  setTDWhSplit(((cx - r.left) / r.width) * 100);
+}
+tdWhCmp.addEventListener('mousedown',  e => { tdWhDrag=true; onTDWhMove(e.clientX); });
+window.addEventListener('mouseup',     () => tdWhDrag=false);
+window.addEventListener('mousemove',   e => { if(tdWhDrag) onTDWhMove(e.clientX); });
+tdWhCmp.addEventListener('touchstart', e => { e.preventDefault(); tdWhDrag=true; onTDWhMove(e.touches[0].clientX); },{passive:false});
+window.addEventListener('touchend',    () => tdWhDrag=false);
+window.addEventListener('touchmove',   e => { if(tdWhDrag) onTDWhMove(e.touches[0].clientX); },{passive:false});
+
+function show2DStep4() {
+  setNavActive(3);
+  document.getElementById('td-step4').classList.remove('hidden');
+  // Reset comparison slider
+  setTDWhSplit(50);
+  // Reset fallback (in case previously triggered by onerror)
+  document.getElementById('td-wh-cmp').classList.remove('hidden');
+  document.getElementById('td-wh-shade').classList.remove('hidden');
+  document.getElementById('td-wh-fallback').classList.add('hidden');
+  document.getElementById('whitening-ui-2d').classList.add('hidden');
+  // Reset fallback slider too
+  document.getElementById('whitening-slider-2d').value = 1;
+  document.getElementById('td-wh-overlay').style.opacity = '0';
+  document.getElementById('shade-display-2d').textContent = 'A3';
+  document.getElementById('shade-target-2d').textContent  = 'A3';
+  document.getElementById('shade-guide-2d').textContent   = shadeDesc[0];
+  // Re-trigger onerror check by reloading the after image src
+  const afterImg = document.getElementById('td-wh-after');
+  const src = afterImg.src;
+  afterImg.src = '';
+  afterImg.src = src;
+}
+
+// Fallback slider (only active when whitened image unavailable)
+document.getElementById('whitening-slider-2d').addEventListener('input', e => {
+  const lv = parseInt(e.target.value);
+  const t  = (lv - 1) / 9;
+  document.getElementById('td-wh-overlay').style.opacity = (t * 0.55).toString();
+  document.getElementById('shade-display-2d').textContent = shadeGuide[lv-1];
+  document.getElementById('shade-target-2d').textContent  = shadeGuide[lv-1];
+  document.getElementById('shade-guide-2d').textContent   = shadeDesc[lv-1];
+});
+
+document.getElementById('td-step4-btn').addEventListener('click', () => {
+  hide2DAll();
+  // Reuse shared face-preview panel
+  document.getElementById('back-btn').textContent = '← ホワイトニングに戻る';
+  whUi.classList.add('hidden');
+  faceEl.classList.remove('hidden');
+  document.getElementById('action-bar').classList.add('hidden');
+  labelUpper.style.display='none'; labelLower.style.display='none';
+  phase=5; setNavActive(4);
+  setCmpSplit(50); setCmpAngle('front');
+  document.getElementById('score-before').textContent='62';
+  document.getElementById('score-after').textContent='62';
+  document.getElementById('sc-ring-num').textContent='62';
+  document.getElementById('sc-ring-before').setAttribute('stroke-dasharray','0 302');
+  document.getElementById('sc-ring-after').setAttribute('stroke-dasharray','0 302');
+  setTimeout(()=>animateRing(62,89,1600), 350);
+});
+
+// ── Restart ───────────────────────────────────────────────────────────────
+document.getElementById('restart-btn').addEventListener('click', () => location.reload());
+
 })();
 </script>
 </body>
