@@ -12,9 +12,10 @@
       --accent: #00BFA5; --accent2: #00897B; --gold: #D4A843;
       --text: #E0E8EF; --muted: #5A7A8A;
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{background:var(--bg);color:var(--text);font-family:'Outfit','Noto Sans JP','Segoe UI',Meiryo,sans-serif;height:100vh;overflow:hidden}
-    #app{display:grid;grid-template-rows:48px 1fr 40px;height:100vh}
+    *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+    button{touch-action:manipulation}
+    body{background:var(--bg);color:var(--text);font-family:'Outfit','Noto Sans JP','Segoe UI',Meiryo,sans-serif;height:100vh;height:100dvh;overflow:hidden}
+    #app{display:grid;grid-template-rows:48px 1fr 40px;height:100vh;height:100dvh}
     /* Header */
     #header{background:var(--panel);display:flex;align-items:center;padding:0 20px;gap:16px;border-bottom:1px solid rgba(0,191,165,.2)}
     .logo{font-weight:700;font-size:1.3rem;color:var(--accent);letter-spacing:.15em}
